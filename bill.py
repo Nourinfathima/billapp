@@ -37,6 +37,11 @@ while True:
         #print("total=",total)
     elif(choice==3):
         print("Chips added")
+        quantity=int(input("enter the quantity:--"))
+        total+=20*quantity
+        items.append("chips "+str(quantity))
+        #print("quantity=",quantity)
+        #print("total=",total)
     elif(choice==4):
         print("Sandwitch added")
     elif(choice==5):
