@@ -44,6 +44,11 @@ while True:
         #print("total=",total)
     elif(choice==4):
         print("Sandwitch added")
+        quantity=int(input("enter the quantity:--"))
+        total+=30*quantity
+        items.append("sandwitch "+str(quantity))
+        #print("quantity=",quantity)
+        #print("total=",total)
     elif(choice==5):
         print("Cake added")
     elif(choice==6):
