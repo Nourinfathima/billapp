@@ -18,7 +18,10 @@ while True:
     print("4.Sandwitch:-")
     print("5.cake:-")
     print("6.Generate  Bill:-")
-    print("7.Exit:-")
+    print("7.all transaction bill:")
+    print("8.display transaction sumery of particulr date")
+    print("9.Transaction sumery of period")
+    print("10.Exit:-")
 
     choice=int(input("Please enter your choice:-"))
     if(choice==1):
@@ -49,7 +52,8 @@ while True:
         items.append("sandwitch "+str(quantity))
         #print("quantity=",quantity)
         #print("total=",total)
-    name=input("enter your name:--")
+    elif(choice==6):
+        name=input("enter your name:--")
         phone=input("enter your phone:--")
         print("****bill****")
         print("Name:-",name)
@@ -70,9 +74,21 @@ while True:
 
         items=[]
         total=0
-    elif(choice==6):
-        print("bill")
+    
+        
     elif(choice==7):
-        break    
+         print("view all transaction")
+
+         date=input("enter a date(yy-mm-dd):-")
+
+
+         try:
+            sql="SELECT `name`, `phone`, `amount` FROM `bill` WHERE `date`='"+date+"'"
+            mycursor.execute(sql)
+            result = mycursor.fetchall()
+            print(tabulate(result,headers=["name","phone","amount"],tablefmt="psql"))
+            except mysql.connector.Error as e:
+            sys.exit("view transaction error")   
+            break    
 
 
