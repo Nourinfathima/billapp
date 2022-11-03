@@ -49,8 +49,27 @@ while True:
         items.append("sandwitch "+str(quantity))
         #print("quantity=",quantity)
         #print("total=",total)
-    elif(choice==5):
-        print("Cake added")
+    name=input("enter your name:--")
+        phone=input("enter your phone:--")
+        print("****bill****")
+        print("Name:-",name)
+        print("phone:-",phone)
+        date= datetime.today().strftime('%Y-%m-%d')
+        print("date:-",date)
+        print("****items*****")
+        for i in items:
+            print(i)
+        print("total bill =",total)
+        try:
+            sql="INSERT INTO `bill`(`name`, `phone`, `date`, `amount`) VALUES (%s,%s,now(),%s)"
+            data=(name,phone,total)
+            mycursor.execute(sql,data)
+            mydb.commit()
+        except mysql.connector.Error as e:
+            sys.exit("insert error")
+
+        items=[]
+        total=0
     elif(choice==6):
         print("bill")
     elif(choice==7):
