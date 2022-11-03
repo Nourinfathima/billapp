@@ -79,16 +79,16 @@ while True:
     elif(choice==7):
          print("view all transaction")
 
-         date=input("enter a date(yy-mm-dd):-")
-
-
-         try:
-            sql="SELECT `name`, `phone`, `amount` FROM `bill` WHERE `date`='"+date+"'"
+    elif(choice==8):
+            print("display transaction sumery of particulr date") 
+            date=input("enter a date(yy-mm-dd):-")
+    try:
+            sql="SELECT `name`, `phno`, `amount` FROM `bill` WHERE `date`='"+date+"'"
             mycursor.execute(sql)
             result = mycursor.fetchall()
-            print(tabulate(result,headers=["name","phone","amount"],tablefmt="psql"))
-            except mysql.connector.Error as e:
-            sys.exit("view transaction error")   
+            print(tabulate(result,headers=["name","phno","amount"],tablefmt="psql" ))
+    except mysql.connector.Error  as e:
+            sys.exit("transaction summery error")   
             break    
 
 
