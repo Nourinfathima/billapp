@@ -88,7 +88,20 @@ while True:
             result = mycursor.fetchall()
             print(tabulate(result,headers=["name","phno","amount"],tablefmt="psql" ))
     except mysql.connector.Error  as e:
-            sys.exit("transaction summery error")   
-            break    
+            sys.exit("transaction summery error")
+    elif(choice==9):
+        print("Transaction sumery of period")
+        date1=input("enter a statring date(yy-mm-dd):-")
+        date2=input("enter a  end date(yy-mm-dd):-")
+    try:
+            sql="SELECT SUM(`amount`) FROM `bill` WHERE `date` BETWEEN '"+date1+"' AND '"+date1+"' "
+            mycursor.execute(sql)
+            result = mycursor.fetchall()
+            print(tabulate(result,headers=["amount"],tablefmt="psql" ))
+    except mysql.connector.Error as e:
+            sys.exit("ransaction summery between 2 dates")
+    elif(choice==10):
+        break       
+               
 
 
